@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.tag}}
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: {{ .Values.image.tag}}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.image.tag}}
+    spec:
+      containers:
+      - image: {{ .Values.image.name}}
+        imagePullPolicy: {{ .Values.image.imagePullPolicy}}
+        name: {{ .Values.image.tag}}
+        ports:
+        - containerPort: {{ .Values.image.containerPort}}
+          protocol: {{ .Values.image.protocol}}

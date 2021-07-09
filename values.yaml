@@ -1,0 +1,17 @@
+# Default values for ingress.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  tag: web
+  name: gcr.io/google-samples/hello-app:1.0
+  imagePullPolicy: IfNotPresent
+  containerPort: 8080
+  protocol: TCP
+service:
+  port: 8080
+  protocol: TCP
+  tag: web
+  type: NodePort
